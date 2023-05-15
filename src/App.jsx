@@ -5,7 +5,7 @@ import './App.css'
 import {BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Home from './Components/Home';
 import Movies from './Components/Movies';
-import Person from './Components/Person';
+
 import Nav from './Components/Nav';
 
 function App() {
@@ -23,9 +23,9 @@ function App() {
                       <Movies/>
                     </Route>
 
-                    <Route path = "/persons:id">
+                    {/* <Route path = "/person">
                       <Person/>
-                    </Route>
+                    </Route> */}
                 </Switch>
 
             </Router>

@@ -14,7 +14,7 @@ export default function Nav() {
         <nav>
             <Link exact to = "/">Home</Link>
             <Link  to = "/Movies">Movies</Link>
-            <Link  to = "/persons:id">Persons</Link>
+            {/* <Link  to = "/person">Persons</Link> */}
         </nav>
     </div>
   )
