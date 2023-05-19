@@ -10,7 +10,7 @@ import {
   useParams
 } from "react-router-dom";
 
-import Form from './Form';
+
 import CardList, { POSTER_PREFIX } from './CardList';
 
 
@@ -78,20 +78,12 @@ export default function Movies() {
      <Router>
       <MainContainer>
 
-        <h1>Krille</h1>
-        {/* <StyledPara>This is the most awesomest page ever. Trust me bro Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam eligendi corrupti reiciendis porro asperiores necessitatibus ipsam id dignissimos ullam commodi? Optio fuga eos quidem repellat quos assumenda omnis, sequi atque?</StyledPara>
-      <Hero /> */}
-        <ul>
-          <li>
-            <Link to="/movie">Movie</Link>
-          </li>
-        </ul>
         <Switch>
           <Route path="/movie">
             <Movies />
           </Route>
           <Route path="/">
-            <Form />
+         
             <CardList />
           </Route>
         </Switch>

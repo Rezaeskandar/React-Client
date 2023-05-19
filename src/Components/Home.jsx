@@ -3,6 +3,10 @@ import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch, useParams 
 import axios from 'axios';
 import styled from 'styled-components';
 
+const Container = styled.div`
+  padding: 20px;
+`;
+
 const ListContainer = styled.div`
   margin-top: 20px;
 `;
@@ -98,20 +102,19 @@ function Person() {
   const { path } = useRouteMatch();
 
   return (
-    <div>
+    <Container>
+      <p>Select a person from the list.</p>
       <Router>
-        <h3>Person</h3>
         <Switch>
           <Route exact path={path}>
             <PersonList />
-            <p>Select a person from the list.</p>
           </Route>
           <Route path="/person/:personId" exact>
             <MovieList />
           </Route>
         </Switch>
       </Router>
-    </div>
+    </Container>
   );
 }
 

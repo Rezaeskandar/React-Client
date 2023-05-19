@@ -1,44 +1,64 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch, useParams } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const NavContainer = styled.div`
-  background-color: #f2f2f2;
+const NavContainer = styled.nav`
+  background-color: #333;
   padding: 10px;
+  color: #fff;
+`;
+
+const NavTitle = styled.h1`
+  margin: 0;
+  font-size: 24px;
 `;
 
 const NavList = styled.ul`
+  list-style-type: none;
   display: flex;
-  list-style-type: none; /* Remove the bullets */
-  padding-left: 1em;
+  justify-content: flex-start;
+  margin: 0;
+  padding: 0;
 `;
 
-const StyledLink = styled(Link)`
-  color: #333;
-  text-decoration: none;
+const NavItem = styled.li`
   margin-right: 10px;
-  font-weight: bold;
 
-  &:hover {
-    color: #a9c04f;
+  &:last-child {
+    margin-right: 0;
   }
 `;
 
-const Nav = () => {
+const NavLink = styled(Link)`
+  text-decoration: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease-in-out;
+
+  &:hover {
+    background-color: #555;
+  }
+`;
+
+function Nav() {
   return (
     <NavContainer>
-      <nav>
-        <NavList>
-          <li>
-            <StyledLink to="/">Home</StyledLink>
-          </li>
-          <li>
-            <StyledLink to="/Movies">Movies</StyledLink>
-          </li>
-        </NavList>
-      </nav>
+     
+      <NavList>
+        <NavItem>
+          <NavLink to="/">Home</NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink to="/movies">Movies</NavLink>
+        </NavItem>
+      </NavList>
     </NavContainer>
   );
-};
+}
 
 export default Nav;
+
+
+
+
