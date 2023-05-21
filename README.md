@@ -24,7 +24,7 @@ This is a web application that serves as a movie database. It allows you to list
    ```shell
    git clone https://github.com/Rezaeskandar/React-Client
     2- Install the dependencies:
-   cd movie-database
+   cd React-Client
    npm install
 ### Usage
 Open the web browser and go to http://localhost:3000.
