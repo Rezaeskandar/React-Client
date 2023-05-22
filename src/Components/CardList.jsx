@@ -25,7 +25,7 @@ const ButtonContainer = styled.div`
 const Button = styled.button`
   padding: 0.5em 1em;
   margin: 0 0.5em;
-  background-color: #4287f5;
+  background-color: #5e7aa9;
   color: white;
   border: none;
   border-radius: 4px;
@@ -34,6 +34,15 @@ const Button = styled.button`
   &:hover {
     background-color: #1e5ae8;
   }
+`;
+const NavLink = styled(Link)`
+  text-decoration: none;
+  color: #fff;
+  padding: 6px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease-in-out;
+
+
 `;
 
 function CardList(props) {
@@ -64,13 +73,13 @@ function CardList(props) {
     <>
       <CardListContainer>
         {data.results.map((movie) => (
-          <Link to={`/movie/${movie.id}`} key={movie.id}>
+          <NavLink to={`/movie/${movie.id}`} key={movie.id}>
             <Card
               title={movie.title}
               overview={movie.overview}
               poster={POSTER_PREFIX + movie.poster_path}
             />
-          </Link>
+          </NavLink>
         ))}
       </CardListContainer>
 

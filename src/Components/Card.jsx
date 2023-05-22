@@ -13,6 +13,7 @@ const CardContainer = styled.div`
   margin-bottom: 1em;
   overflow: hidden;
   margin-left: 2em;
+  margin-top: 5em;
   transition: transform 0.3s ease-in-out;
 
   &:hover {

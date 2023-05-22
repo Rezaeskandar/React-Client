@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch, useParams } from 'react-router-dom';
 import axios from 'axios';
 import styled from 'styled-components';
+import FetchRating from './FetchRating';
 
 const Container = styled.div`
   padding: 20px;
@@ -70,12 +71,16 @@ function PersonList() {
 function MovieList() {
   const { personId } = useParams();
   const [movies, setMovies] = useState([]);
+  const [ratings, setRatings] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const result = await axios.get(`https://localhost:7210/api/Movies/GetMovieByPersonById?PersonId=${personId}`);
         setMovies(result.data.movies);
+               
+      const response3 = await axios.get(`https://localhost:7210/api/Movies/Get-Rating-Movie-ByPersonId?personId=${personId}`);
+      setRatings(response3.data.movies)
       } catch (error) {
         console.error(error);
       }
@@ -83,20 +88,34 @@ function MovieList() {
     fetchData();
   }, [personId]);
 
+
+
   return (
     <div>
-      <h1>Movies for {personId}:</h1>
+      <h3>Movies for person{personId}:</h3>
       <ListContainer>
         {movies.map(movie => (
           <PersonListItem key={movie.movieId}>
-            <MovieTitle>{movie.name}</MovieTitle>
-            <MovieLink href={movie.movelink}>{movie.movelink}</MovieLink>
+           Movie Name: <MovieTitle> {movie.name}</MovieTitle>
+            <MovieLink href={movie.movelink}> {movie.movelink}</MovieLink>
+            <p>Rating: {movie.ratings}</p>
+          </PersonListItem>
+        ))}
+      </ListContainer>
+
+      <h3>Ratings for person {personId}:</h3>
+      <ListContainer>
+        {ratings.map(rating => (
+          <PersonListItem key={rating.ratingId}>
+            <p>Rating: {rating.ratings}</p>
           </PersonListItem>
         ))}
       </ListContainer>
     </div>
   );
 }
+
+
 
 function Person() {
   const { path } = useRouteMatch();
@@ -111,6 +130,7 @@ function Person() {
           </Route>
           <Route path="/person/:personId" exact>
             <MovieList />
+            <FetchRating/>
           </Route>
         </Switch>
       </Router>
@@ -122,6 +142,7 @@ export default function Home() {
   return (
     <div>
       <Person />
+    
     </div>
   );
 }
