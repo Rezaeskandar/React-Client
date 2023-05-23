@@ -78,9 +78,10 @@ function MovieList() {
       try {
         const result = await axios.get(`https://localhost:7210/api/Movies/GetMovieByPersonById?PersonId=${personId}`);
         setMovies(result.data.movies);
-               
+        // console.log(result.data.movies)
       const response3 = await axios.get(`https://localhost:7210/api/Movies/Get-Rating-Movie-ByPersonId?personId=${personId}`);
       setRatings(response3.data.movies)
+      console.log(response3.data.fkMovieId)
       } catch (error) {
         console.error(error);
       }
@@ -106,10 +107,12 @@ function MovieList() {
       <h3>Ratings for person {personId}:</h3>
       <ListContainer>
         {ratings.map(rating => (
-          <PersonListItem key={rating.ratingId}>
+          <PersonListItem key={rating.movieId}>
             <p>Rating: {rating.ratings}</p>
           </PersonListItem>
+          
         ))}
+        
       </ListContainer>
     </div>
   );

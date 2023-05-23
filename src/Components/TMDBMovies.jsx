@@ -25,7 +25,7 @@ const MainContainer = styled.main`
 const StyledPara = styled.p`
   max-width: 20em;
 `;
-const Api_key ="4830bcf38fe0badbc31f150d78c89f7f"
+const Api_key =""
 
 function Movie() {
   const [data, setData] = React.useState(false);
