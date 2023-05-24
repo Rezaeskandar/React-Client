@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Switch, Route, Link, useRouteMatch, useParams 
 import axios from 'axios';
 import styled from 'styled-components';
 import FetchRating from './FetchRating';
+import AddPersonToGenreForm from './AddPersonToGenreForm';
+import AddNewFilmForm from './AddNewFilmForm';
+
 
 const Container = styled.div`
   padding: 20px;
@@ -99,9 +102,9 @@ function MovieList() {
           <PersonListItem key={movie.movieId}>
            Movie Name: <MovieTitle> {movie.name}</MovieTitle>
             <MovieLink href={movie.movelink}> {movie.movelink}</MovieLink>
-            <p>Rating: {movie.ratings}</p>
           </PersonListItem>
         ))}
+             <AddNewFilmForm/>
       </ListContainer>
 
       <h3>Ratings for person {personId}:</h3>
@@ -133,6 +136,8 @@ function Person() {
           </Route>
           <Route path="/person/:personId" exact>
             <MovieList />
+           <AddPersonToGenreForm/>
+       
             <FetchRating/>
           </Route>
         </Switch>
